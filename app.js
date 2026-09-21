@@ -242,6 +242,18 @@ function renderGallery() {
 }
 
 /**
+ * Open Lightbox by Artwork ID (for Spotlight Deck)
+ */
+function openLightboxById(id) {
+  if (!allWorks || allWorks.length === 0) return;
+  const index = allWorks.findIndex(w => w.Id === id);
+  if (index !== -1) {
+    filteredWorks = [...allWorks];
+    openLightbox(index);
+  }
+}
+
+/**
  * FAQ Accordion Toggle
  */
 function toggleFaq(btn) {

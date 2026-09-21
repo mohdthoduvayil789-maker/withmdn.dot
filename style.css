@@ -482,6 +482,186 @@ body {
 }
 
 /* ==========================================================================
+   Hero Interactive 3D Fanned-Out Card Deck (Reference Match)
+   ========================================================================== */
+.hero-deck-showcase {
+  width: 100%;
+  max-width: 1080px;
+  margin: 2.75rem auto 0.5rem;
+  padding: 1.5rem 0.5rem 2.5rem;
+  perspective: 1200px;
+  overflow: visible;
+}
+
+.deck-cards-track {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 360px;
+  padding: 1.5rem 0;
+}
+
+.deck-card {
+  width: 210px;
+  height: 310px;
+  background: #ffffff;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(0, 15, 43, 0.09);
+  box-shadow: 0 16px 36px rgba(0, 15, 43, 0.07), 0 2px 8px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-origin: center bottom;
+  user-select: none;
+  flex-shrink: 0;
+  margin: 0 -22px;
+}
+
+.deck-card-top {
+  width: 100%;
+  height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.deck-card-top img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.85rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.deck-card-bottom {
+  height: 70px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.85rem;
+  border-top: 1px solid rgba(0, 15, 43, 0.04);
+}
+
+.deck-card-title {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-main);
+  text-align: center;
+  letter-spacing: -0.01em;
+  transition: color 0.2s ease;
+}
+
+/* Subtle Pastel Gradients matching reference */
+.bg-pastel-blue { background: linear-gradient(180deg, #e0f2fe 0%, #f8fafc 100%); }
+.bg-pastel-yellow { background: linear-gradient(180deg, #fef3c7 0%, #f8fafc 100%); }
+.bg-pastel-teal { background: linear-gradient(180deg, #ccfbf1 0%, #f8fafc 100%); }
+.bg-pastel-purple { background: linear-gradient(180deg, #ede9fe 0%, #f8fafc 100%); }
+.bg-pastel-rose { background: linear-gradient(180deg, #ffe4e6 0%, #f8fafc 100%); }
+
+/* Specific Fan-Out Rotations & Overlaps */
+.deck-card-1 {
+  transform: rotate(-9deg) translateY(12px);
+  z-index: 1;
+}
+
+.deck-card-2 {
+  transform: rotate(-4.5deg) translateY(4px);
+  z-index: 2;
+}
+
+.deck-card-3 {
+  transform: rotate(0deg) translateY(-8px);
+  z-index: 3;
+}
+
+.deck-card-4 {
+  transform: rotate(4.5deg) translateY(4px);
+  z-index: 2;
+}
+
+.deck-card-5 {
+  transform: rotate(9deg) translateY(12px);
+  z-index: 1;
+}
+
+/* Interactive Hover State (Straighten & Float) */
+.deck-card:hover {
+  transform: rotate(0deg) translateY(-26px) scale(1.1) !important;
+  z-index: 20 !important;
+  box-shadow: 0 28px 55px rgba(0, 15, 43, 0.18), 0 8px 20px rgba(4, 90, 255, 0.12);
+  border-color: rgba(4, 90, 255, 0.35);
+}
+
+.deck-card:hover .deck-card-top img {
+  transform: scale(1.05);
+}
+
+.deck-card:hover .deck-card-title {
+  color: var(--brand-primary);
+}
+
+/* Mobile & Tablet Responsiveness */
+@media (max-width: 991px) {
+  .hero-deck-showcase {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .deck-cards-track {
+    justify-content: flex-start;
+    padding: 1.5rem 1.5rem;
+    min-height: auto;
+  }
+  
+  .deck-card {
+    width: 190px;
+    height: 280px;
+    margin: 0 -12px;
+  }
+
+  .deck-card-top {
+    height: 215px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-deck-showcase {
+    margin-top: 1.75rem;
+  }
+  
+  .deck-card {
+    width: 165px;
+    height: 250px;
+    margin: 0 -10px;
+  }
+  
+  .deck-card-top {
+    height: 190px;
+    padding: 0.6rem;
+  }
+  
+  .deck-card-bottom {
+    height: 60px;
+  }
+
+  .deck-card-title {
+    font-size: 0.72rem;
+  }
+}
+
+/* ==========================================================================
    Global Regions Ticker Marquee Ribbon (Mydbucket Style)
    ========================================================================== */
 .regions-ticker-wrap {
