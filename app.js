@@ -76,7 +76,6 @@ function renderCategoryTabs() {
   const categories = window.PORTFOLIO_CATEGORIES || {};
   let tabsHtml = `
     <button class="tab-btn ${currentCategory === 'all' ? 'active' : ''}" onclick="selectCategory('all')">
-      <span>🌟</span>
       <span>All Work</span>
       <span class="tab-count">${counts['all'] || 0}</span>
     </button>
@@ -96,11 +95,9 @@ function renderCategoryTabs() {
   orderedKeys.forEach(key => {
     if (counts[key] > 0) {
       const config = categories[key] || { name: key.replace(/-/g, ' ') };
-      const icon = CATEGORY_ICONS[key] || '📁';
       const isActive = currentCategory === key ? 'active' : '';
       tabsHtml += `
         <button class="tab-btn ${isActive}" onclick="selectCategory('${key}')">
-          <span>${icon}</span>
           <span>${config.name}</span>
           <span class="tab-count">${counts[key]}</span>
         </button>
