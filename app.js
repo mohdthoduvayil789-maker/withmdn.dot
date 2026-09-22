@@ -212,7 +212,7 @@ function renderGallery() {
     return `
       <div class="gallery-card" onclick="openLightbox(${idx})">
         <div class="gallery-card-img-wrap">
-          <span class="card-badge">${icon} ${niceName}</span>
+          <span class="card-badge">${niceName}</span>
           <img 
             src="${item.LocalPath}" 
             alt="${item.Title}" 
