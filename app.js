@@ -33,9 +33,26 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /**
- * Initialize Portfolio Data from window.PORTFOLIO_DATA
+ * Initialize Portfolio Data from window.PORTFOLIO_DATA or LocalStorage override
  */
 async function initPortfolioData() {
+  applySiteSettings();
+
+  // Check for local admin overrides first
+  const localSaved = localStorage.getItem('MDN_CUSTOM_PORTFOLIO_DATA');
+  if (localSaved) {
+    try {
+      const parsed = JSON.parse(localSaved);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        allWorks = parsed;
+        renderApp();
+        return;
+      }
+    } catch (e) {
+      console.warn('Error parsing local portfolio data override:', e);
+    }
+  }
+
   if (window.PORTFOLIO_DATA && Array.isArray(window.PORTFOLIO_DATA)) {
     allWorks = window.PORTFOLIO_DATA;
     renderApp();
@@ -47,6 +64,50 @@ async function initPortfolioData() {
     } catch (err) {
       console.warn('Could not fetch data.json locally, fallback initialized', err);
     }
+  }
+}
+
+/**
+ * Dynamically apply custom site settings (phone, WhatsApp, social links) if configured
+ */
+function applySiteSettings() {
+  const savedSettings = localStorage.getItem('MDN_CUSTOM_SITE_SETTINGS');
+  if (!savedSettings) return;
+  try {
+    const settings = JSON.parse(savedSettings);
+
+    // Update WhatsApp links
+    if (settings.phone) {
+      const phoneClean = settings.phone.replace(/[^0-9]/g, '');
+      const msg = settings.whatsappMsg || 'Hi Muhammed! I saw your portfolio on mhdfaman.com and would like to connect.';
+      const waUrl = `https://wa.me/${phoneClean}?text=${encodeURIComponent(msg)}`;
+      document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+        link.href = waUrl;
+      });
+    }
+
+    // Update Instagram links
+    if (settings.instagram) {
+      document.querySelectorAll('a[href*="instagram.com"]').forEach(link => {
+        link.href = settings.instagram;
+      });
+    }
+
+    // Update LinkedIn links
+    if (settings.linkedin) {
+      document.querySelectorAll('a[href*="linkedin.com"]').forEach(link => {
+        link.href = settings.linkedin;
+      });
+    }
+
+    // Update Pinterest links
+    if (settings.pinterest) {
+      document.querySelectorAll('a[href*="pinterest.com"]').forEach(link => {
+        link.href = settings.pinterest;
+      });
+    }
+  } catch (e) {
+    console.warn('Error applying custom site settings:', e);
   }
 }
 
