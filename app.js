@@ -142,6 +142,16 @@ function renderCategoryTabs() {
     </button>
   `;
 
+  const TAB_DISPLAY_NAMES = {
+    'social-media-creatives-handling': 'Social Media',
+    'marketing': 'Marketing',
+    'social-media-flyer': 'Flyers',
+    'food-poster': 'Food & Restaurant',
+    'visiting-card': 'Visiting Cards',
+    'edu': 'Education',
+    'the-right-way-the-truth': 'Thematic Art'
+  };
+
   // Standard ordered board keys present in created works
   const orderedKeys = [
     'social-media-creatives-handling',
@@ -156,10 +166,11 @@ function renderCategoryTabs() {
   orderedKeys.forEach(key => {
     if (counts[key] > 0) {
       const config = categories[key] || { name: key.replace(/-/g, ' ') };
+      const label = TAB_DISPLAY_NAMES[key] || config.name || key.replace(/-/g, ' ');
       const isActive = currentCategory === key ? 'active' : '';
       tabsHtml += `
         <button class="tab-btn ${isActive}" onclick="selectCategory('${key}')">
-          <span>${config.name}</span>
+          <span>${label}</span>
           <span class="tab-count">${counts[key]}</span>
         </button>
       `;
