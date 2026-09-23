@@ -23,7 +23,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Core Stylesheet -->
-  <link rel="stylesheet" href="style.css?v=14" />
+  <link rel="stylesheet" href="style.css?v=16" />
 </head>
 <body class="bg-agency text-agency antialiased">
 
@@ -366,26 +366,28 @@
         </p>
       </div>
 
-      <!-- Controls Hub: Search & Categories -->
+      <!-- Controls Hub: Sleek Minimal Search & Filter Bar -->
       <div class="filter-hub-agency">
         
-        <!-- Search Input -->
-        <div class="search-box-agency">
-          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-          <input 
-            type="text" 
-            id="searchInput" 
-            placeholder="Search campaigns, posters, flyers..." 
-            oninput="handleSearch(this.value)"
-            aria-label="Search Created Artworks"
-          />
-          <button id="clearSearchBtn" class="clear-search-btn" onclick="clearSearch()" style="display:none;" title="Clear Search">✕</button>
-        </div>
+        <div class="filter-toolbar-row">
+          <!-- Category Filter Tabs -->
+          <div class="tabs-scroll-wrap" id="tabsScrollContainer">
+            <div class="category-tabs-agency" id="categoryTabsContainer">
+              <!-- Dynamically populated via JS -->
+            </div>
+          </div>
 
-        <!-- Category Filter Tabs -->
-        <div class="tabs-scroll-wrap">
-          <div class="category-tabs-agency" id="categoryTabsContainer">
-            <!-- Dynamically populated via JS -->
+          <!-- Minimal Search Input -->
+          <div class="search-box-agency">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <input 
+              type="text" 
+              id="searchInput" 
+              placeholder="Search designs..." 
+              oninput="handleSearch(this.value)"
+              aria-label="Search Created Artworks"
+            />
+            <button id="clearSearchBtn" class="clear-search-btn" onclick="clearSearch()" style="display:none;" title="Clear Search">✕</button>
           </div>
         </div>
 
@@ -909,7 +911,7 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="portfolio-data.js?v=15"></script>
-  <script src="app.js?v=15"></script>
+  <script src="portfolio-data.js?v=16"></script>
+  <script src="app.js?v=16"></script>
 </body>
 </html>

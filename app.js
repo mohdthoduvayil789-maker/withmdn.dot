@@ -553,6 +553,38 @@ function setupEventListeners() {
       isDragging = false;
     });
   }
+
+  // Smooth Mouse Drag & Wheel horizontal scroll for category tabs
+  const tabsScroll = document.getElementById('tabsScrollContainer');
+  if (tabsScroll) {
+    let isTabsDragging = false;
+    let tabsStartX = 0;
+    let scrollLeft = 0;
+
+    tabsScroll.addEventListener('mousedown', (e) => {
+      isTabsDragging = true;
+      tabsStartX = e.pageX - tabsScroll.offsetLeft;
+      scrollLeft = tabsScroll.scrollLeft;
+    });
+
+    window.addEventListener('mouseup', () => {
+      isTabsDragging = false;
+    });
+
+    tabsScroll.addEventListener('mousemove', (e) => {
+      if (!isTabsDragging) return;
+      e.preventDefault();
+      const x = e.pageX - tabsScroll.offsetLeft;
+      const walk = (x - tabsStartX) * 1.5;
+      tabsScroll.scrollLeft = scrollLeft - walk;
+    });
+
+    tabsScroll.addEventListener('wheel', (e) => {
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX) && tabsScroll.scrollWidth > tabsScroll.clientWidth) {
+        tabsScroll.scrollLeft += e.deltaY;
+      }
+    }, { passive: true });
+  }
 }
 
 function updateFooterYear() {
