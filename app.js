@@ -247,6 +247,16 @@ function applyFilters() {
   renderGallery();
 }
 
+const SHORT_CATEGORY_NAMES = {
+  'social-media-creatives-handling': 'Creatives',
+  'social-media-flyer': 'Flyer',
+  'marketing': 'Marketing',
+  'food-poster': 'Food Poster',
+  'visiting-card': 'Card',
+  'edu': 'Education',
+  'the-right-way-the-truth': 'Thematic'
+};
+
 /**
  * Render gallery grid
  */
@@ -267,13 +277,14 @@ function renderGallery() {
 
   gallery.innerHTML = filteredWorks.map((item, idx) => {
     const catConfig = categories[item.Board] || { name: item.BoardName || 'Design' };
+    const shortBadgeName = SHORT_CATEGORY_NAMES[item.Board] || catConfig.name || item.BoardName || 'Design';
     const niceName = catConfig.name || item.BoardName;
     const icon = CATEGORY_ICONS[item.Board] || '🎨';
 
     return `
       <div class="gallery-card" onclick="openLightbox(${idx})">
         <div class="gallery-card-img-wrap">
-          <span class="card-badge">${niceName}</span>
+          <span class="card-badge">${shortBadgeName}</span>
           <img 
             src="${item.LocalPath}" 
             alt="${item.Title}" 
