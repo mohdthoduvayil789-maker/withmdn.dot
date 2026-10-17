@@ -23,7 +23,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Core Stylesheet -->
-  <link rel="stylesheet" href="style.css?v=26" />
+  <link rel="stylesheet" href="style.css?v=27" />
 </head>
 <body class="bg-agency text-agency antialiased">
 
@@ -42,7 +42,6 @@
       <!-- Navigation Links -->
       <nav class="agency-nav-menu" aria-label="Main Navigation">
         <a href="#services" class="agency-nav-link">Services</a>
-        <a href="#showcase" class="agency-nav-link">Projects</a>
         <a href="#why-choose-us" class="agency-nav-link">Why Us</a>
         <a href="#arsenal" class="agency-nav-link">Arsenal</a>
         <a href="#testimonials" class="agency-nav-link">Testimonials</a>
@@ -93,8 +92,8 @@
 
       <!-- Action Buttons -->
       <div class="hero-cta-group">
-        <a href="#showcase" class="btn btn-agency-primary">
-          <span>Explore Created Works</span>
+        <a href="#services" class="btn btn-agency-primary">
+          <span>Explore Services</span>
           <svg class="icon-xs" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </a>
 
@@ -297,8 +296,8 @@
             <span class="deliverable-tag">Admission Creatives</span>
             <span class="deliverable-tag">Contest Assets</span>
           </div>
-          <a href="#showcase" class="service-link">
-            <span>Explore Works</span>
+          <a href="#contact" class="service-link">
+            <span>Inquire Service</span>
             <svg class="icon-xs" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
           </a>
         </div>
@@ -352,68 +351,6 @@
     </div>
   </section>
 
-  <!-- ==========================================================================
-       4. Curated Works Gallery (All 25 Original Artworks)
-       ========================================================================== -->
-  <section id="showcase" class="section-wrap">
-    <div class="container">
-      
-      <div class="section-header-agency">
-        <span class="section-sub-badge">Featured Work</span>
-        <h2 class="section-title-agency">Curated Portfolio Gallery</h2>
-        <p class="section-desc-agency" id="activeCategoryDesc">
-          Showing authentic graphic design creations uploaded and handcrafted by Mohd Thoduvayil (@withmdn.dot).
-        </p>
-      </div>
-
-      <!-- Controls Hub: Sleek Minimal Search & Filter Bar -->
-      <div class="filter-hub-agency">
-        
-        <div class="filter-toolbar-row">
-          <!-- Category Filter Tabs -->
-          <div class="tabs-scroll-wrap" id="tabsScrollContainer">
-            <div class="category-tabs-agency" id="categoryTabsContainer">
-              <!-- Dynamically populated via JS -->
-            </div>
-          </div>
-
-          <!-- Minimal Search Input -->
-          <div class="search-box-agency">
-            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-            <input 
-              type="text" 
-              id="searchInput" 
-              placeholder="Search designs..." 
-              oninput="handleSearch(this.value)"
-              aria-label="Search Created Artworks"
-            />
-            <button id="clearSearchBtn" class="clear-search-btn" onclick="clearSearch()" style="display:none;" title="Clear Search">✕</button>
-          </div>
-        </div>
-
-        <!-- Active Meta Info -->
-        <div class="filter-meta-bar">
-          <span class="showing-text">Showing <strong id="visibleCount">25</strong> artworks in <span id="currentCategoryLabel" class="text-brand">All Work</span></span>
-          <button onclick="resetFilters()" class="btn-reset-filters">Reset View</button>
-        </div>
-
-      </div>
-
-      <!-- Gallery Grid -->
-      <div id="galleryContainer" class="gallery-grid-agency">
-        <!-- Rendered via app.js -->
-      </div>
-
-      <!-- Empty State -->
-      <div id="emptyState" class="empty-state-agency hidden">
-        <div class="empty-icon">🔍</div>
-        <h3>No matching designs found</h3>
-        <p>Try searching for different keywords or clear the category filter.</p>
-        <button onclick="resetFilters()" class="btn btn-agency-primary btn-sm">Reset All Filters</button>
-      </div>
-
-    </div>
-  </section>
 
   <!-- ==========================================================================
        5. Our Edge / Why Choose Us (Mydbucket Comparison Matrix Table)
@@ -884,9 +821,9 @@
         <div class="footer-nav-col">
           <h4 class="footer-col-title">Navigation</h4>
           <a href="#services">Services</a>
-          <a href="#showcase">Created Works</a>
           <a href="#why-choose-us">Why Choose Us</a>
           <a href="#arsenal">Design Arsenal</a>
+          <a href="#testimonials">Testimonials</a>
           <a href="#faq">Common Queries</a>
         </div>
 
