@@ -23,7 +23,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Core Stylesheet -->
-  <link rel="stylesheet" href="style.css?v=27" />
+  <link rel="stylesheet" href="style.css?v=28" />
 </head>
 <body class="bg-agency text-agency antialiased">
 
@@ -42,6 +42,7 @@
       <!-- Navigation Links -->
       <nav class="agency-nav-menu" aria-label="Main Navigation">
         <a href="#services" class="agency-nav-link">Services</a>
+        <a href="#featured-work" class="agency-nav-link">Featured</a>
         <a href="#why-choose-us" class="agency-nav-link">Why Us</a>
         <a href="#arsenal" class="agency-nav-link">Arsenal</a>
         <a href="#testimonials" class="agency-nav-link">Testimonials</a>
@@ -92,8 +93,8 @@
 
       <!-- Action Buttons -->
       <div class="hero-cta-group">
-        <a href="#services" class="btn btn-agency-primary">
-          <span>Explore Services</span>
+        <a href="#featured-work" class="btn btn-agency-primary">
+          <span>Explore Featured Work</span>
           <svg class="icon-xs" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </a>
 
@@ -351,6 +352,103 @@
     </div>
   </section>
 
+  <!-- ==========================================================================
+       4. Featured Work (Interactive Frosted Folder Showcase)
+       ========================================================================== -->
+  <section id="featured-work" class="section-wrap folder-showcase-section">
+    <!-- SVG Clip Path Definition for the Frosted Tab Pocket -->
+    <svg width="0" height="0" style="position: absolute;" aria-hidden="true">
+      <defs>
+        <clipPath id="folderTabClip" clipPathUnits="objectBoundingBox">
+          <path d="M 0,0.12 
+                   C 0,0.04 0.02,0 0.05,0 
+                   L 0.35,0 
+                   C 0.39,0 0.42,0.06 0.45,0.14 
+                   C 0.47,0.18 0.50,0.18 0.53,0.18 
+                   L 0.95,0.18 
+                   C 0.98,0.18 1.0,0.22 1.0,0.27 
+                   L 1.0,0.88 
+                   C 1.0,0.96 0.97,1.0 0.93,1.0 
+                   L 0.07,1.0 
+                   C 0.03,1.0 0,0.96 0,0.88 Z" />
+        </clipPath>
+      </defs>
+    </svg>
+
+    <div class="container">
+      
+      <!-- Section Header -->
+      <div class="section-header-agency text-center">
+        <span class="badge-glow-purple">
+          <svg class="badge-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+          Featured Work
+        </span>
+        <h2 class="section-title-agency text-white">Curated Project Dossier</h2>
+        <p class="section-desc-agency text-gray-400">
+          Handcrafted promotional flyers, brand identities, and commercial campaign assets neatly organized inside our interactive folder.
+        </p>
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <div class="folder-category-tabs" id="folderCategoryTabs">
+        <!-- Rendered dynamically via JS -->
+      </div>
+
+      <!-- The Interactive Folder Component -->
+      <div class="folder-stage" id="folderStage">
+        <!-- Folder Backing Plate -->
+        <div class="folder-back-plate"></div>
+
+        <!-- Cards Deck inside Folder -->
+        <div class="folder-cards-deck" id="folderCardsDeck">
+          <!-- Rendered dynamically via JS -->
+        </div>
+
+        <!-- Frosted Glass Front Pocket Flap -->
+        <div class="folder-front-pocket-wrap">
+          <div class="folder-pocket-glass"></div>
+          
+          <!-- Specular Highlight Border SVG -->
+          <svg class="folder-pocket-border" viewBox="0 0 1000 310" preserveAspectRatio="none">
+            <path d="M 0,37 
+                     C 0,12 20,0 50,0 
+                     L 350,0 
+                     C 390,0 420,18 450,43 
+                     C 470,56 500,56 530,56 
+                     L 950,56 
+                     C 980,56 1000,68 1000,84 
+                     L 1000,273 
+                     C 1000,298 970,310 930,310 
+                     L 70,310 
+                     C 30,310 0,298 0,273 Z" 
+                  fill="none" 
+                  stroke="rgba(255, 255, 255, 0.36)" 
+                  stroke-width="2" />
+          </svg>
+
+          <!-- Pocket Content -->
+          <div class="folder-pocket-inner-content">
+            <div class="pocket-meta-left">
+              <div class="pocket-brand-badge">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                <span>WITH MDN. CREATIVE VAULT</span>
+              </div>
+              <h3 class="pocket-title" id="folderPocketTitle">25 Handcrafted Creations</h3>
+            </div>
+
+            <div class="pocket-meta-right">
+              <span class="pocket-hint-text">Hover cards to slide out • Click for HD</span>
+              <a href="https://wa.me/919946381789?text=Hi%20Muhammed!%20I%20saw%20your%20featured%20works%20and%20would%20like%20to%20hire%20you%20for%20a%20design%20project." target="_blank" rel="noopener noreferrer" class="btn-pocket-inquire">
+                <span>Inquire Design</span>
+                <svg class="icon-xs" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
 
   <!-- ==========================================================================
        5. Our Edge / Why Choose Us (Mydbucket Comparison Matrix Table)
@@ -821,6 +919,7 @@
         <div class="footer-nav-col">
           <h4 class="footer-col-title">Navigation</h4>
           <a href="#services">Services</a>
+          <a href="#featured-work">Featured Work</a>
           <a href="#why-choose-us">Why Choose Us</a>
           <a href="#arsenal">Design Arsenal</a>
           <a href="#testimonials">Testimonials</a>

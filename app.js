@@ -119,6 +119,7 @@ function renderApp() {
   if (totalCountEl) totalCountEl.textContent = `${allWorks.length}`;
   renderCategoryTabs();
   applyFilters();
+  initFolderShowcase();
 }
 
 /**
@@ -650,4 +651,156 @@ function initHeroRotatingWords() {
 
   }, 3200);
 }
+
+/* ==========================================================================
+   Interactive Frosted Folder Showcase (Featured Work Dossier)
+   Inspired by File Folder Card Stacks with Glassmorphic Flap
+   ========================================================================== */
+let currentFolderCategory = 'all';
+
+const FOLDER_CATEGORIES_CONFIG = [
+  { id: 'all', label: '⭐ All Highlights', icon: '⭐' },
+  { id: 'social-media-creatives-handling', label: '📱 Social Creatives', icon: '📱' },
+  { id: 'social-media-flyer', label: '📄 Admission & Flyers', icon: '📄' },
+  { id: 'food-poster', label: '🍔 Food & Restaurant', icon: '🍔' },
+  { id: 'visiting-card', label: '🎴 Visiting Cards', icon: '🎴' },
+  { id: 'the-right-way-the-truth', label: '🎨 Thematic Posters', icon: '🎨' }
+];
+
+function initFolderShowcase() {
+  const container = document.getElementById('folderCardsDeck');
+  if (!container) return;
+
+  renderFolderCategoryTabs();
+  loadFolderCategory('all', false);
+}
+
+function renderFolderCategoryTabs() {
+  const tabsContainer = document.getElementById('folderCategoryTabs');
+  if (!tabsContainer || !allWorks || allWorks.length === 0) return;
+
+  // Compute counts for folder categories
+  const counts = { all: allWorks.length };
+  allWorks.forEach(w => {
+    counts[w.Board] = (counts[w.Board] || 0) + 1;
+  });
+
+  tabsContainer.innerHTML = FOLDER_CATEGORIES_CONFIG.map(cat => {
+    const count = counts[cat.id] || 0;
+    if (cat.id !== 'all' && count === 0) return '';
+    const isActive = currentFolderCategory === cat.id ? 'active' : '';
+    return `
+      <button class="folder-tab-btn ${isActive}" onclick="selectFolderCategory('${cat.id}')">
+        <span>${cat.label}</span>
+        <span class="folder-tab-count">${count}</span>
+      </button>
+    `;
+  }).join('');
+}
+
+function selectFolderCategory(catId) {
+  if (currentFolderCategory === catId) return;
+  currentFolderCategory = catId;
+  renderFolderCategoryTabs();
+  loadFolderCategory(catId, true);
+}
+
+function loadFolderCategory(catId, animate) {
+  const deck = document.getElementById('folderCardsDeck');
+  const titleEl = document.getElementById('folderPocketTitle');
+  if (!deck || !allWorks || allWorks.length === 0) return;
+
+  let selectedWorks = [];
+  if (catId === 'all') {
+    // Top 5 Star Highlights across different domains
+    const premierIds = [1, 4, 5, 2, 8];
+    premierIds.forEach(id => {
+      const match = allWorks.find(w => w.Id === id);
+      if (match) selectedWorks.push(match);
+    });
+    // Fallback if any missing
+    if (selectedWorks.length < 5) {
+      allWorks.forEach(w => {
+        if (!selectedWorks.includes(w) && selectedWorks.length < 5) {
+          selectedWorks.push(w);
+        }
+      });
+    }
+    if (titleEl) titleEl.textContent = '25 Handcrafted Creations';
+  } else {
+    selectedWorks = allWorks.filter(w => w.Board === catId).slice(0, 5);
+    const catObj = FOLDER_CATEGORIES_CONFIG.find(c => c.id === catId);
+    if (titleEl && catObj) {
+      titleEl.textContent = `${catObj.label.replace(/^[^\s]+\s/, '')} Dossier`;
+    }
+  }
+
+  const renderCards = () => {
+    const categories = window.PORTFOLIO_CATEGORIES || {};
+    deck.innerHTML = selectedWorks.map((work, idx) => {
+      const slotNum = idx + 1;
+      const catConfig = categories[work.Board] || { name: work.BoardName || 'Creative' };
+      const shortBadge = SHORT_CATEGORY_NAMES[work.Board] || catConfig.name || 'Art';
+      const cleanTitle = (work.Title || 'Featured Work')
+        .replace(/â€”|â€“/g, '—')
+        .replace(/â€™|â€˜/g, "'")
+        .replace(/ðŸ‡µðŸ‡¹/g, '🇵🇹')
+        .replace(/ðŸ‡¸ðŸ‡¦/g, '🇸🇦')
+        .replace(/âš½/g, '⚽')
+        .replace(/[^\x00-\x7F\u0D00-\u0D7F]/g, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+      const cleanDesc = (work.Description || 'Authentic graphic design created by Muhammed.')
+        .replace(/â€”|â€“/g, '—')
+        .replace(/â€™|â€˜/g, "'")
+        .replace(/âš½/g, '⚽')
+        .replace(/[^\x00-\x7F\u0D00-\u0D7F]/g, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+
+      return `
+        <div class="folder-card" data-slot="${slotNum}" onclick="handleFolderCardClick(event, ${work.Id})">
+          <div class="folder-card-top">
+            <span class="folder-card-tag">${shortBadge}</span>
+            <span class="folder-card-arrow">↗</span>
+          </div>
+          <div class="folder-card-title">${cleanTitle}</div>
+          <div class="folder-card-desc">${cleanDesc}</div>
+          <img 
+            class="folder-card-img-thumb" 
+            src="${work.LocalPath || work.RemoteUrl}" 
+            alt="${cleanTitle}" 
+            loading="lazy"
+            onerror="this.onerror=null; this.src='${work.RemoteUrl}';"
+          />
+        </div>
+      `;
+    }).join('');
+  };
+
+  if (animate) {
+    deck.classList.add('animating-out');
+    setTimeout(() => {
+      renderCards();
+      deck.classList.remove('animating-out');
+      deck.classList.add('animating-in');
+      setTimeout(() => deck.classList.remove('animating-in'), 300);
+    }, 200);
+  } else {
+    renderCards();
+  }
+}
+
+function handleFolderCardClick(event, workId) {
+  const card = event.currentTarget;
+  // If on mobile/touch, check if already active
+  const isTouch = window.innerWidth <= 680;
+  if (isTouch && !card.classList.contains('touch-active')) {
+    document.querySelectorAll('.folder-card.touch-active').forEach(c => c.classList.remove('touch-active'));
+    card.classList.add('touch-active');
+    return;
+  }
+  openLightboxById(workId);
+}
+
 
