@@ -17,13 +17,13 @@
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>" />
 
-  <!-- Google Fonts: Plus Jakarta Sans, Outfit & Playfair Display -->
+  <!-- Google Fonts: Plus Jakarta Sans & Outfit (Mydbucket Typography System) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Core Stylesheet -->
-  <link rel="stylesheet" href="style.css?v=25" />
+  <link rel="stylesheet" href="style.css?v=26" />
 </head>
 <body class="bg-agency text-agency antialiased">
 
@@ -41,7 +41,6 @@
 
       <!-- Navigation Links -->
       <nav class="agency-nav-menu" aria-label="Main Navigation">
-        <a href="#hero-featured" class="agency-nav-link">Featured</a>
         <a href="#services" class="agency-nav-link">Services</a>
         <a href="#showcase" class="agency-nav-link">Projects</a>
         <a href="#why-choose-us" class="agency-nav-link">Why Us</a>
@@ -130,117 +129,57 @@
         </div>
       </div>
 
-      <!-- Featured Hero 3D Showcase: Isometric Phone & Floating Creative Cards (Reference Match) -->
-      <div id="hero-featured" class="hero-smd-showcase" aria-label="Featured Creative Works 3D Showcase">
-        <div class="smd-stage-3d">
+      <!-- Interactive 3D Fanned-Out Showcase Deck -->
+      <div class="hero-deck-showcase" aria-label="Featured Creative Works Deck">
+        <div class="deck-cards-track">
           
-          <!-- Crimson Glow & Stipple Aura -->
-          <div class="smd-crimson-aura" aria-hidden="true"></div>
-          
-          <!-- Realistic 3D Phone Mockup -->
-          <div class="smd-phone-device" onclick="openLightboxById(1)" title="Click to inspect featured creative in Lightbox">
-            <!-- Dynamic Island -->
-            <div class="smd-phone-island">
-              <span class="smd-island-camera"></span>
+          <!-- Card 1: Diploma in GCC Office Administration & Professional Typing -->
+          <div class="deck-card deck-card-1" onclick="openLightboxById(1)" title="Diploma in GCC Office Administration &amp; Professional Typing">
+            <div class="deck-card-top bg-pastel-blue">
+              <img src="assets/images/multy_hands_gcc_office_admin.jpg" alt="Diploma in GCC Office Administration" loading="lazy" />
             </div>
-            
-            <div class="smd-phone-screen">
-              <!-- Screen Status bar -->
-              <div class="smd-screen-status">
-                <span class="smd-status-time">9:41</span>
-                <div class="smd-status-icons">
-                  <svg class="smd-status-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-                  <svg class="smd-status-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
-                </div>
-              </div>
-
-              <!-- Instagram Style Header -->
-              <div class="smd-app-header">
-                <span class="smd-app-brand">For you <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg></span>
-                <span class="smd-app-handle">@withmdn.dot</span>
-              </div>
-
-              <!-- Stories Highlights Carousel -->
-              <div class="smd-stories-row">
-                <div class="smd-story-item">
-                  <div class="smd-story-avatar smd-story-add">
-                    <img src="assets/images/multy_hands_gcc_office_admin.jpg" alt="Your Story" />
-                    <span class="smd-story-plus">+</span>
-                  </div>
-                  <span class="smd-story-label">Your story</span>
-                </div>
-                <div class="smd-story-item">
-                  <div class="smd-story-avatar smd-gradient-ring">
-                    <img src="assets/images/food_poster_bisa_snacks.png" alt="Food Branding" />
-                  </div>
-                  <span class="smd-story-label">branding</span>
-                </div>
-                <div class="smd-story-item">
-                  <div class="smd-story-avatar smd-gradient-ring">
-                    <img src="assets/images/social-media-flyer_created_1.jpg" alt="Campaigns" />
-                  </div>
-                  <span class="smd-story-label">campaigns</span>
-                </div>
-                <div class="smd-story-item">
-                  <div class="smd-story-avatar smd-gradient-ring">
-                    <img src="assets/images/multy_hands_janaseva_course.jpg" alt="Academy" />
-                  </div>
-                  <span class="smd-story-label">academy</span>
-                </div>
-              </div>
-
-              <!-- Feed Post Header -->
-              <div class="smd-post-user-row">
-                <img src="assets/images/multy_hands_gcc_office_admin.jpg" alt="Avatar" class="smd-user-avatar" />
-                <div class="smd-user-meta">
-                  <div class="smd-user-name">withmdn.dot <span class="smd-verified-check">✓</span></div>
-                  <div class="smd-user-sub">Visual Identity &amp; Creatives</div>
-                </div>
-              </div>
-
-              <!-- Primary Featured Post Artwork -->
-              <div class="smd-post-media">
-                <img src="assets/images/multy_hands_gcc_office_admin.jpg" alt="Featured GCC Office Admin Flyer" />
-                <div class="smd-post-tap-hint">
-                  <span>✦ Tap to View HD</span>
-                </div>
-              </div>
-
-              <!-- Post Action Bar -->
-              <div class="smd-post-bar">
-                <div class="smd-bar-left">
-                  <svg class="smd-action-icon smd-heart-active" viewBox="0 0 24 24" fill="#ef4444"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-                  <svg class="smd-action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                  <svg class="smd-action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
-                </div>
-                <div class="smd-bar-right">
-                  <svg class="smd-action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
-                </div>
-              </div>
+            <div class="deck-card-bottom">
+              <span class="deck-card-title">Diploma in GCC Admin</span>
             </div>
           </div>
 
-          <!-- Floating 3D Artwork Card 1 (Top-Right / Tilted Marketing Creative) -->
-          <div class="smd-float-card smd-float-1" onclick="openLightboxById(16)" title="Social Media Management — Elite Events">
-            <div class="smd-float-inner">
-              <span class="smd-float-tag">CAMPAIGN DESIGN</span>
-              <img src="assets/images/marketing_created_12.jpg" alt="Marketing Design" loading="lazy" />
+          <!-- Card 2: Bisa Snacks — Kozhi Ada Promotional Poster -->
+          <div class="deck-card deck-card-2" onclick="openLightboxById(4)" title="Bisa Snacks — Kozhi Ada Promotional Poster">
+            <div class="deck-card-top bg-pastel-yellow">
+              <img src="assets/images/food_poster_bisa_snacks.png" alt="Bisa Snacks — Kozhi Ada" loading="lazy" />
+            </div>
+            <div class="deck-card-bottom">
+              <span class="deck-card-title">Bisa Snacks — Kozhi Ada</span>
             </div>
           </div>
 
-          <!-- Floating 3D Artwork Card 2 (Mid-Right / Vibrant Food Creative) -->
-          <div class="smd-float-card smd-float-2" onclick="openLightboxById(4)" title="Bisa Snacks — Kozhi Ada">
-            <div class="smd-float-inner">
-              <span class="smd-float-tag smd-tag-gold">FOOD BRANDING</span>
-              <img src="assets/images/food_poster_bisa_snacks.png" alt="Food &amp; Restaurant" loading="lazy" />
+          <!-- Card 3: Cristiano Ronaldo | Portugal Football Legend (Centerpiece) -->
+          <div class="deck-card deck-card-3" onclick="openLightboxById(5)" title="Cristiano Ronaldo | Portugal Football Legend">
+            <div class="deck-card-top bg-pastel-teal">
+              <img src="assets/images/social-media-flyer_created_1.jpg" alt="Cristiano Ronaldo | Portugal Legend" loading="lazy" />
+            </div>
+            <div class="deck-card-bottom">
+              <span class="deck-card-title">Cristiano Ronaldo — CR7</span>
             </div>
           </div>
 
-          <!-- Floating 3D Artwork Card 3 (Far-Right / Legend Flyer) -->
-          <div class="smd-float-card smd-float-3" onclick="openLightboxById(5)" title="Cristiano Ronaldo — Portugal Legend">
-            <div class="smd-float-inner">
-              <span class="smd-float-tag smd-tag-emerald">SPORTS &amp; LEGEND</span>
-              <img src="assets/images/social-media-flyer_created_1.jpg" alt="Cristiano Ronaldo" loading="lazy" />
+          <!-- Card 4: Janaseva Practical Training Course — Multy Hands Academy -->
+          <div class="deck-card deck-card-4" onclick="openLightboxById(2)" title="Janaseva Practical Training Course — Multy Hands Academy">
+            <div class="deck-card-top bg-pastel-purple">
+              <img src="assets/images/multy_hands_janaseva_course.jpg" alt="Janaseva Practical Training Course" loading="lazy" />
+            </div>
+            <div class="deck-card-bottom">
+              <span class="deck-card-title">Janaseva Practical Course</span>
+            </div>
+          </div>
+
+          <!-- Card 5: Eid Gah Festival Creative -->
+          <div class="deck-card deck-card-5" onclick="openLightboxById(8)" title="Eid Gah Festival Creative">
+            <div class="deck-card-top bg-pastel-rose">
+              <img src="assets/images/social-media-flyer_created_4.jpg" alt="Eid Gah Festival Creative" loading="lazy" />
+            </div>
+            <div class="deck-card-bottom">
+              <span class="deck-card-title">Eid Gah Festival Creative</span>
             </div>
           </div>
 
@@ -358,8 +297,8 @@
             <span class="deliverable-tag">Admission Creatives</span>
             <span class="deliverable-tag">Contest Assets</span>
           </div>
-          <a href="#hero-featured" class="service-link">
-            <span>Featured 3D Showcase</span>
+          <a href="#showcase" class="service-link">
+            <span>Explore Works</span>
             <svg class="icon-xs" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
           </a>
         </div>
